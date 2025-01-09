@@ -1,6 +1,6 @@
 include meta-rdk-mtk-bpir4/recipes-ccsp/ccsp/ccsp_common_bananapi.inc
 
-
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 do_install_append() {
 
 install -d ${D}${sysconfdir}/
