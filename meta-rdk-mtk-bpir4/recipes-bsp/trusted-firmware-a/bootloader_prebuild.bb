@@ -27,6 +27,8 @@ python do_unpack:append() {
     dst_fip = os.path.join(d.getVar('WORKDIR'), 'bpi-r4_sdmmc_fip_6-6.bin')
     shutil.copyfile(src_fip, dst_fip)
 }
+SRC_URI:append += " file://bpi-r4_sdmmc_bl2.img \
+                    file://bpi-r4_sdmmc_fip.bin"
 
 do_deploy() {
         mkdir -p ${DEPLOYDIR}/atf/
