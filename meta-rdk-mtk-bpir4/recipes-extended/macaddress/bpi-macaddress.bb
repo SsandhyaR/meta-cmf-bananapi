@@ -11,8 +11,10 @@ S = "${WORKDIR}/git"
 PV = "1.0.0"
 SRCREV = "55d70f1560fc9092c037d869aae450524b5c6ae8"
 
-CXXFLAGS_append = "  -DAARCH64_BUILD"
-CXXFLAGS_append = "  ${@bb.utils.contains('DISTRO_FEATURES', 'EasyMesh', bb.utils.contains('DISTRO_FEATURES', 'em_extender', ' -D_EM_EXT_BUILD_ -D_EM_BUILD_ ',' -D_EM_BUILD_ ', d), ' ', d)}"
+CXXFLAGS:append = "  -DAARCH64_BUILD"
+CXXFLAGS:append = "  ${@bb.utils.contains('DISTRO_FEATURES', 'EasyMesh', bb.utils.contains('DISTRO_FEATURES', 'em_extender', ' -D_EM_EXT_BUILD_ -D_EM_BUILD_ ',' -D_EM_BUILD_ ', d), ' ', d)}"
+SRCREV = "${AUTOREV}"
+CXXFLAGS:append = "  -DAARCH64_BUILD"
 
 
 do_compile() {

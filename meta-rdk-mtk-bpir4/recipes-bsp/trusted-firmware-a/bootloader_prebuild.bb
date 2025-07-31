@@ -17,7 +17,7 @@ do_configure[noexec] = "1"
 # since there is no 'main' package generated (empty)
 RDEPENDS_${PN}-dev = ""
 
-SRC_URI_append = " ${@bb.utils.contains('DISTRO_FEATURES', 'kernel6-6', \
+SRC_URI:append = " ${@bb.utils.contains('DISTRO_FEATURES', 'kernel6-6', \
     ' file://bpi-r4_sdmmc_bl2_6-6.img \
       file://bpi-r4_sdmmc_fip_6-6.bin \
       file://bpi-r4_sdmmc_bl2_B_6-6.img \
