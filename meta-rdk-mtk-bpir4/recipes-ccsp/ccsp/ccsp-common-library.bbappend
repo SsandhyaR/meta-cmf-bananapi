@@ -78,6 +78,11 @@ do_install:append_class-target() {
    sed -i '/ExecStart=/i ExecStartPre=/usr/bin/start_cron' ${D}/lib/systemd/system/RdkFwUpgradeManager.service
 }
 
+TARGET_CFLAGS += " \
+    -Wno-error=address \
+    -Wno-error=implicit-function-declaration \
+    -Wno-error=format-truncation \
+"
 
 SYSTEMD_SERVICE_${PN}:remove_onewifi = " ccspwifiagent.service"
 SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', 'onewifi.service ', '', d)}"
@@ -95,10 +100,10 @@ SYSTEMD_SERVICE_${PN} += " CcspAdvSecuritySsp.service"
 SYSTEMD_SERVICE_${PN} += "CcspXdnsSsp.service"
 SYSTEMD_SERVICE_${PN}:remove = " utopia.service"
 
-FILES_${PN}:remove_onewifi = "${systemd_unitdir}/system/ccspwifiagent.service"
-FILES_${PN}:remove = "${systemd_unitdir}/system/utopia.service" 
-FILES_${PN}:append = "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', ' ${systemd_unitdir}/system/onewifi.service ', '', d)}"
-FILES_${PN}:append = " \
+FILES:${PN}:remove_onewifi = "${systemd_unitdir}/system/ccspwifiagent.service"
+FILES:${PN}:remove = "${systemd_unitdir}/system/utopia.service"
+FILES:${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', '${systemd_unitdir}/system/onewifi.service', '', d)}"
+FILES:${PN} += "\
    ${systemd_unitdir}/system/wan-initialized.target \
    ${systemd_unitdir}/system/wan-initialized.path \
    ${systemd_unitdir}/system/CcspTelemetry.service \

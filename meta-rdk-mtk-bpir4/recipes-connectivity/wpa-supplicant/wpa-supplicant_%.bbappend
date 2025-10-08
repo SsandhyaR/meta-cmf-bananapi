@@ -2,6 +2,11 @@ EXTRA_OEMAKE = "CONFIG_BUILD_WPA_CLIENT_SO=y"
 FILES_SOLIBSDEV = ""
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
+SRCREV = "${SRCREV_kernel6-6}"
+
+do_install:append () {
+	install -d ${D}${includedir}
+
 DEPENDS:remove += "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', 'ubus udebug', '', d)}"
 SRC_URI:append = "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', ' file://0001-remove-ubus-on-rdkb.patch', '', d)}"
 do_configure:append() {
@@ -23,4 +28,7 @@ FILES_${PN} += "${libdir}/libwpa_client.so"
 FILES_${PN} += "${includedir}/wpa_ctrl.h"
 FILES_${PN} += "lib/rdk"
 FILES_${PN} += " /usr/local"
+FILES:${PN} += "${includedir}/wpa_ctrl.h"
+FILES:${PN} += "${libdir}/rdk"
+FILES:${PN} += " /usr/local"
 FILES:${PN}-dbg += " /usr/local/"

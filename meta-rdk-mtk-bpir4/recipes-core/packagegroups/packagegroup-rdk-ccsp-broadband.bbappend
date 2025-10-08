@@ -1,10 +1,10 @@
-RDEPENDS_packagegroup-rdk-ccsp-broadband:remove = " rdk-wifi-hal"
+RDEPENDS:packagegroup-rdk-ccsp-broadband:remove = " rdk-wifi-hal"
 
 RDEPENDS_packagegroup-rdk-ccsp-broadband:append = " rdk-speedtest-cli"
 RDEPENDS_packagegroup-rdk-ccsp-broadband:append = " iperf3"
 RDEPENDS_packagegroup-rdk-ccsp-broadband:append = " parodus2ccsp"
 
-RDEPENDS_packagegroup-rdk-ccsp-broadband:append = " \
+RDEPENDS:packagegroup-rdk-ccsp-broadband:append = " \
            ${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', 'rdk-wifi-hal', '' ,d)} \
            ${@bb.utils.contains('DISTRO_FEATURES', 'CPUPROCANALYZER_BROADBAND', 'cpuprocanalyzer', ' ', d)} \
            ${@bb.utils.contains('DISTRO_FEATURES', 'cellular_hybrid_support', 'usbmuxd', ' ', d)} \
@@ -17,4 +17,3 @@ GWPROVAPP = "${@bb.utils.contains('DISTRO_FEATURES','rdkb_wan_manager','ccsp-gwp
 RDEPENDS_packagegroup-rdk-ccsp-broadband:append = "${@bb.utils.contains('DISTRO_FEATURES', 'rdkb_cellular_manager_mm', ' rdk-cellularmanager-mm', ' ', d)}"
 RDEPENDS_packagegroup-rdk-ccsp-broadband:append = " rdktelcovoicemanager"
 RDEPENDS_packagegroup-rdk-ccsp-broadband:append = " gw-lan-refresh"
-RDEPENDS_packagegroup-rdk-ccsp-broadband:append = "${@bb.utils.contains('DISTRO_FEATURES', 'rdkb_cellular_manager_mm', ' rdk-cellularmanager-mm', ' ', d)}"

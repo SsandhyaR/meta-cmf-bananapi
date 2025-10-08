@@ -9,7 +9,9 @@ do_install:append() {
 
 install -d ${D}${sysconfdir}/
 install -d ${D}${sysconfdir}/utopia/
+install -d ${D}${sysconfdir}/utopia/service.d
 install -d -m 0777 ${D}/minidumps
+install -m 755 ${S}/source/scripts/init/system/utopia_init.sh ${D}${sysconfdir}/utopia/
 DISTRO_WAN_ENABLED="${@bb.utils.contains('DISTRO_FEATURES','rdkb_wan_manager','true','false',d)}"
 if [ $DISTRO_WAN_ENABLED = 'true' ]; then
 
@@ -95,6 +97,7 @@ sed -i '/mgmt_wan_httpaccess/i \$mgmt_wan_httpaccess_ert=1' ${D}${sysconfdir}/ut
 
 }
 
-FILES_${PN} += " \
-                /minidumps/ \
+FILES:${PN} += " \
+        /minidumps/ \
 "
+FILES:${PN}-dev += "${libdir}/*.so"
