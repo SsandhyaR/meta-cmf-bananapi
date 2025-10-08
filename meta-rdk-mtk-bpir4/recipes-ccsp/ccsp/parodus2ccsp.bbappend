@@ -28,8 +28,16 @@ do_install:append () {
 
 SYSTEMD_SERVICE:${PN}:append = " webpabroadband.service"
  
-FILES_${PN}:append = " \
+FILES:${PN} += "${libdir}/libprivilege.so.*"
+FILES:${PN}-dev += " \
+    ${libdir}/libprivilege.so \
+    ${libdir}/libprivilege.a \
+"
+
+FILES:${PN}:append = " \
      ${systemd_unitdir}/system/webpabroadband.service \
-     ${base_libdir_native}/rdk/* \
+     ${base_libdir}/rdk/* \
      /etc/parodus/* \
+     ${bindir}/webpa \
+     ${exec_prefix}/ccsp \
      "
