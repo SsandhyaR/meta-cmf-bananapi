@@ -12,6 +12,7 @@ SRC_URI:append = " \
     file://rdkb_cfg/container.cfg \
     ${@bb.utils.contains('DISTRO_FEATURES','sdmmc','file://rdkb_cfg/sdmmc.cfg','',d)} \
     file://rdkb_cfg/wps_key.cfg \
+    file://rdkb_cfg/kernel_6_6.cfg \
     file://enable_sdcard_6_6.patch;apply=no \
 "
 
@@ -35,6 +36,13 @@ KERNEL_CONFIG_FRAGMENTS += " \
 "
 #KERNEL_AUTO_APPEND_CONFIG = "1"
 
+do_filogic_patches:append() {
+    cd ${S}
+    if [ ! -e patch_applied_6_6 ]; then
+         patch -p1 < ${WORKDIR}/enable_sdcard_6_6.patch
+         touch patch_applied_6_6
+    fi
+}
 # Ensure DTBs are built even if we're using fitImage
 do_compile:append() {
     if [ -n "${KERNEL_DEVICETREE}" ]; then
