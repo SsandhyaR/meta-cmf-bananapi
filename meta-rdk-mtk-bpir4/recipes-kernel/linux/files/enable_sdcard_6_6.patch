@@ -13,6 +13,7 @@ index c4455fbc..dd3bd8b1 100644
  
  	memory {
 @@ -75,6 +74,15 @@
+@@ -75,6 +75,15 @@
  			default-state = "off";
  		};
  	};
@@ -29,6 +30,7 @@ index c4455fbc..dd3bd8b1 100644
  
  &eth {
 @@ -102,7 +110,7 @@
+@@ -102,7 +111,7 @@
  };
  
  &gsw_port0 {
@@ -38,6 +40,7 @@ index c4455fbc..dd3bd8b1 100644
  
  &gsw_phy0_led0 {
 @@ -304,6 +312,20 @@
+@@ -304,6 +313,20 @@
  			function = "pwm";
  		};
  	};
@@ -70,6 +73,7 @@ index c4455fbc..dd3bd8b1 100644
  	status = "okay";
  };
 @@ -402,3 +428,18 @@
+@@ -402,3 +425,18 @@
  &xphy {
  	status = "okay";
  };
