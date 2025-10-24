@@ -70,3 +70,5 @@ DISTRO_FEATURES:append = " CONFIG_IEEE80211BE"
 #Enable the below DISTRO to enable Hybrid Hal(rndis/modem) for cellular devices
 #DISTRO_FEATURES:append_broadband = " cellular_hybrid_support"
 PREFERRED_VERSION_wpa-supplicant = "2.11"
+PREFERRED_VERSION_zlib:scarthgap = "1.3.1"
+PREFERRED_VERSION_zlib-native:scarthgap = "1.3.1"
