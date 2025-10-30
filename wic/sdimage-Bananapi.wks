@@ -6,7 +6,6 @@ bootloader --ptable gpt --timeout=0
 # 1. BL2 (aligned at 17 sectors, 4079KB)
 part --source rawcopy --sourceparams="file=atf/bpi-r4_sdmmc_bl2.img" --part-name bl2 --align 17 --fixed-size 4079K --active --part-type=0FC63DAF-8483-4772-8E79-3D69D8477DE4
 
-
 # 2. FIP (aligned at 6656 sectors, 2048KB)
 part --source rawcopy --sourceparams="file=atf/bpi-r4_sdmmc_fip.bin" --part-name fip --align 6656 --fixed-size 2M --part-type=0FC63DAF-8483-4772-8E79-3D69D8477DE4
 
