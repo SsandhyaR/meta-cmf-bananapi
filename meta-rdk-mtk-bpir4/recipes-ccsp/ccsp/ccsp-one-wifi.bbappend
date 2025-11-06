@@ -47,8 +47,4 @@ FILES:${PN} += " \
     /usr/bin/wifi_events_consumer \
     /nvram/wifi_defaults.txt \
 "
-RDEPENDS:${PN} += "msgpack-c"
-FILES:${PN} += "${libdir}/*.so"
-FILES:${PN}-dev:remove = "${libdir}/*.so"
-INSANE_SKIP:${PN} += "dev-so"
-
+INSANE_SKIP:${PN} += "file-rdeps"

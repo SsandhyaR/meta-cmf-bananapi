@@ -1,2 +1,3 @@
 include ccsp_common_bananapi.inc
-RDEPENDS:${PN} += " msgpack-c"
+RDEPENDS_${PN} += "ndisc6"
+INSANE_SKIP:${PN} += "file-rdeps"
