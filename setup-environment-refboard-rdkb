@@ -113,5 +113,5 @@ else # SD card image is default
 	    echo "> The BL2 and FIP binaries for kernel-6.6 aren't in the downloads directory. Copy these binaries into the directory and then restart the build. You can find instructions for creating the necessary binaries on the RDK-B Code Releases page: (https://wiki.rdkcentral.com/display/CMF/RDK-B+Code+Releases)"
 	    echo "**********************************************************************"
 	    return 1
-     fi
+    fi
 fi

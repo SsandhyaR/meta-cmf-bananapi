@@ -7,4 +7,4 @@ RDEPENDS:packagegroup-filogic-mt76:remove:onewifi = " \
                     uci \
                     ubus \
 "
-RDEPENDS_packagegroup-filogic-mt76_remove_broadband = " mt76-test"
+RDEPENDS:packagegroup-filogic-mt76:remove:broadband = " mt76-test"

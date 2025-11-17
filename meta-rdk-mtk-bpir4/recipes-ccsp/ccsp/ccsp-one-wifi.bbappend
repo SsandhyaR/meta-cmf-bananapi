@@ -57,3 +57,4 @@ FILES:${PN} += " \
     /nvram/wifi_defaults.txt \
 "
 
+RDEPENDS:${PN} += "msgpack-c"
