@@ -101,6 +101,11 @@ ${_TOPDIR}/meta-cmf-filogic/recipes-rdkb/sysint-broadband/sysint-broadband.bbapp
 
 echo 'RDEPENDS:${PN}-dev = ""' >> ${_TOPDIR}/meta-filogic/recipes-kernel/linux6-6-libc-headers/linux-libc-headers.inc
 
+if [ ! -e ${_TOPDIR}/meta-filogic/recipes-kernel/linux/linux_changes_applied ]; then
+    sed -i -e '/WORKDIR}\/003-rdkb-refactor-bpi-r4-dts.patch/s/^/#/' ${_TOPDIR}/meta-filogic/recipes-kernel/linux/linux-mediatek_6.6.bb
+    touch ${_TOPDIR}/meta-filogic/recipes-kernel/linux/linux_changes_applied
+fi
+
 if [ "X$BPI_IMG_TYPE" == "Xnand" ]; then
     sed -i '/sdmmc/s/^/#/' ${_TOPDIR}/meta-cmf-bananapi/conf/distro/include/rdk-bpi.inc
 else # SD card image is default
