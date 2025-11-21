@@ -6,7 +6,7 @@ SRC_URI:append = " \
                 "
 CFLAGS_aarch64:append = " -Werror=format-truncation=1 "
 
-do_install:append_class-target() {
+do_install:append:class-target() {
    install -D -m 0644 ${S}/systemd_units/parodus.service ${D}${systemd_unitdir}/system/parodus.service
    install -D -m 0644 ${S}/systemd_units/webpa.service ${D}${systemd_unitdir}/system/webpa.service
    sed -i 's/parodusCmd.cmd &/parodusCmd.cmd/' ${D}${systemd_unitdir}/system/parodus.service
@@ -98,9 +98,8 @@ SYSTEMD_SERVICE_${PN} += "webpa.service"
 SYSTEMD_SERVICE_${PN}:remove = " utopia.service"
 SYSTEMD_SERVICE_${PN} += " CcspAdvSecuritySsp.service"
 SYSTEMD_SERVICE_${PN} += "CcspXdnsSsp.service"
-SYSTEMD_SERVICE_${PN}:remove = " utopia.service"
 
-FILES:${PN}:remove_onewifi = "${systemd_unitdir}/system/ccspwifiagent.service"
+FILES:${PN}:remove:onewifi = "${systemd_unitdir}/system/ccspwifiagent.service"
 FILES:${PN}:remove = "${systemd_unitdir}/system/utopia.service"
 FILES:${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', '${systemd_unitdir}/system/onewifi.service', '', d)}"
 FILES:${PN} += "\
