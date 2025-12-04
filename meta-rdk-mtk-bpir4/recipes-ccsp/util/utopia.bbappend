@@ -100,4 +100,7 @@ sed -i '/mgmt_wan_httpaccess/i \$mgmt_wan_httpaccess_ert=1' ${D}${sysconfdir}/ut
 FILES:${PN} += " \
         /minidumps/ \
 "
-FILES:${PN}-dev += "${libdir}/*.so"
+#FILES:${PN}-dev += "${libdir}/*.so"
+FILES:${PN} += "${libdir}/*.so"
+INSANE_SKIP:${PN} += "dev-so"
+
