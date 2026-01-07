@@ -3,7 +3,7 @@ SUMMARY = "Update the MAC address"
 LICENSE="Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=175792518e4ac015ab6696d16c4f607e"
 
-inherit autotools ${@bb.utils.contains("DISTRO_FEATURES", "kirkstone", "python3native", "pythonnative", d)}  systemd
+inherit autotools ${@bb.utils.contains_any("DISTRO_FEATURES", "kirkstone scarthgap", "python3native", "pythonnative", d)}  systemd
 
 SRC_URI = "${CMF_GITHUB_ROOT}/broadband-utils;protocol=https;branch=develop"
 
