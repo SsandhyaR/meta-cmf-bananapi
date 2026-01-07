@@ -2,8 +2,8 @@ EXTRA_OEMAKE = "CONFIG_BUILD_WPA_CLIENT_SO=y"
 FILES_SOLIBSDEV = ""
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-DEPENDS_remove += "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', 'ubus udebug', '', d)}"
-SRC_URI_append = "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', ' file://0001-remove-ubus-on-rdkb.patch', '', d)}"
+DEPENDS:remove += "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', 'ubus udebug', '', d)}"
+SRC_URI:append = "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', ' file://0001-remove-ubus-on-rdkb.patch', '', d)}"
 do_configure:append() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', 'true', 'false', d)}; then
         sed -i 's/^CONFIG_UBUS=y/# CONFIG_UBUS is not set/' ${S}/wpa_supplicant/.config
@@ -11,7 +11,7 @@ do_configure:append() {
     fi
 }
 
-do_install_append () {
+do_install:append () {
         install -d ${D}${includedir}
         install -d ${D}${libdir}
         install -d ${D}/lib/rdk/
